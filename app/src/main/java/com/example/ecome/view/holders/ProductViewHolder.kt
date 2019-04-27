@@ -6,6 +6,7 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.example.ecome.R
 import com.example.ecome.data.vos.ProductVO
+import kotlinx.android.synthetic.main.item_view_product.view.*
 
 class ProductViewHolder(view: View) : BaseViewHolder<ProductVO>(view) {
 
@@ -14,9 +15,9 @@ class ProductViewHolder(view: View) : BaseViewHolder<ProductVO>(view) {
     lateinit var productPrice: TextView
 
     init {
-        productPrice = itemView.findViewById(R.id.tv_product_price)
-        productName = itemView.findViewById(R.id.tv_product_name)
-        productImage = itemView.findViewById(R.id.imv_product)
+        productPrice = itemView.tv_product_price
+        productName = itemView.tv_product_name
+        productImage = itemView.imv_product
     }
 
 

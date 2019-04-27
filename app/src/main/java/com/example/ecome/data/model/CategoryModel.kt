@@ -1,11 +1,11 @@
 package com.example.ecome.data.model
 
-import android.util.Log
+import android.content.Context
 import com.example.ecome.data.vos.CategoryVO
 import com.example.ecome.delegate.BaseDelegate
 import com.example.ecome.network.response.CategoryResponse
 
-class CategoryModel private constructor() : BaseModel(), ICategory {
+class CategoryModel private constructor(context : Context) : BaseModel(context), ImplCategory {
 
 
     companion object {
@@ -13,14 +13,18 @@ class CategoryModel private constructor() : BaseModel(), ICategory {
 
         fun getInstance(): CategoryModel {
             if (categoryModel == null) {
-                categoryModel = CategoryModel()
+                throw RuntimeException("NewsModel is being invoked before initializing.")
             }
             return categoryModel!!
 
         }
+
+        fun initNewsAppModel(context : Context) {
+            categoryModel = CategoryModel(context)
+        }
     }
 
-    override fun getCategoryList(result: ICategory.CategoryResult) : MutableList<CategoryVO> {
+    override fun getCategoryList(result: ImplCategory.CategoryResult) : MutableList<CategoryVO> {
 
 
 
@@ -32,7 +36,7 @@ class CategoryModel private constructor() : BaseModel(), ICategory {
             }
 
             override fun success(dataVo: CategoryResponse) {
-                mEcoDatabase!!.getCategoryDao().insertCategory(dataVo.categoryList!!)
+                mEcommerceDatabase!!.getCategoryDao().insertCategory(dataVo.categoryList!!)
 
                 result.onSuccess(dataVo.categoryList)
 
@@ -41,11 +45,11 @@ class CategoryModel private constructor() : BaseModel(), ICategory {
 
         })
 
-        return  mEcoDatabase!!.getCategoryDao().getCategory()
+        return  mEcommerceDatabase!!.getCategoryDao().getCategory()
     }
 
       fun isEmpty():Boolean {
-       return if(mEcoDatabase!!.getCategoryDao().getCategory()==null) {
+       return if(mEcommerceDatabase!!.getCategoryDao().getCategory()==null) {
             true
         }else {
            false

@@ -2,7 +2,7 @@ package com.example.ecome.data.model
 
 import com.example.ecome.data.vos.ProductVO
 
-interface IProduct {
+interface ImplProduct {
 
     fun getProducts(delegate: ProductDelegate) : MutableList<ProductVO>
 

@@ -6,6 +6,7 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.example.ecome.R
 import com.example.ecome.data.vos.CategoryVO
+import kotlinx.android.synthetic.main.item_view_category.view.*
 
 class CategoryViewHolder(view: View) : BaseViewHolder<CategoryVO>(view) {
 
@@ -13,8 +14,8 @@ class CategoryViewHolder(view: View) : BaseViewHolder<CategoryVO>(view) {
     var categoryName: TextView? = null
 
     init {
-        categoryIcon = itemView.findViewById(R.id.imv_category_icon)
-        categoryName = itemView.findViewById(R.id.tv_category_name)
+        categoryIcon = itemView.imv_category_icon
+        categoryName = itemView.tv_category_name
     }
 
     override fun bind(bindData: CategoryVO) {

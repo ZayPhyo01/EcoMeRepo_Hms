@@ -1,26 +1,13 @@
 package com.example.ecome.data.model
 
 import android.content.Context
-import com.example.ecome.network.DataAgent
 import com.example.ecome.network.ProductDataAgent
-import com.example.ecome.persistance.EcoDatabase
-import com.example.ecome.util.DataAgentUtil
+import com.example.ecome.persistance.EcommerceDatabase
 
-open class BaseModel() {
+open class BaseModel protected constructor(context: Context) {
 
-    var mDataAgent : ProductDataAgent
+    var mDataAgent = ProductDataAgent.getInstance()
 
-
-    init {
-        mDataAgent = ProductDataAgent.getInstance()
-
-    }
-    companion object {
-        var mEcoDatabase  : EcoDatabase?=null
-        fun setUpDatabase(context: Context){
-            mEcoDatabase = EcoDatabase.getInstance(context)
-        }
-    }
-
+    var mEcommerceDatabase : EcommerceDatabase = EcommerceDatabase.getInstance(context)
 
 }

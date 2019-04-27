@@ -1,36 +1,51 @@
 package com.example.ecome.data.vos
 
-import android.arch.persistence.room.ColumnInfo
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.Ignore
-import android.arch.persistence.room.PrimaryKey
+import android.arch.persistence.room.*
 import android.support.annotation.ColorInt
+import com.example.ecome.network.typeconverter.ProductImagesTypeConvertor
+import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "product")
-data class ProductVO(
+@TypeConverters(ProductImagesTypeConvertor::class)
+class ProductVO {
+
+
     @PrimaryKey
     @ColumnInfo
-    var product_id: Int? = null,
+    @SerializedName("product_id")
+    var product_id: Int = 0
 
     @ColumnInfo
-    var product_name: String? = null,
+    @SerializedName("product_name")
+    var product_name: String? = null
 
-    @Ignore
-    var product_image_url: MutableList<ProductImageVO>? = null,
-
-    @ColumnInfo
-    var product_desc: String? = null,
 
     @ColumnInfo
-    var product_price: String? = null,
+    @SerializedName("product_image_url")
+    var product_image_url: List<ProductImageVO>? = null
+        get() = if (field == null) ArrayList() else field
 
     @ColumnInfo
-    var uploaded_time: String? = null,
+    @SerializedName("product_desc")
+    var product_desc: String? = null
 
     @ColumnInfo
-    var availability: Boolean? = null,
+    @SerializedName("product_price")
+    var product_price: String? = null
 
     @ColumnInfo
+    @SerializedName("uploaded_time")
+    var uploaded_time: String? = null
+
+    @ColumnInfo
+    @SerializedName("uploaded_date")
     var uploaded_date: String? = null
 
-)
+    @ColumnInfo
+    @SerializedName("availability")
+    var availability: String? = null
+
+//    var images: List<String>? = null
+//            get() = if (field == null) ArrayList() else field
+
+}

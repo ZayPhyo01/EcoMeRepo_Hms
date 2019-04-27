@@ -19,4 +19,8 @@ interface ProductDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertProduct(products : MutableList<ProductVO>) : List<Long>
 
+
+
+
+
 }

@@ -4,20 +4,22 @@ import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.Index
 import android.arch.persistence.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "category")
 data class CategoryVO(
 
     @PrimaryKey
-    @ColumnInfo(name = "category_id")
-    var category_id: Int? = null,
+    @ColumnInfo
+    @SerializedName ("category_id" ) var category_id :Int,
 
-    @ColumnInfo(name = "category_name")
-    var category_name: String? = null,
+    @ColumnInfo
+    @SerializedName ("category_name") var category_name : String,
 
-    @ColumnInfo(name = "category_icon")
-    var category_icon: String? = null,
+    @ColumnInfo
+    @SerializedName ("category_icon" ) val category_icon :String,
 
-    @ColumnInfo(name = "category_color")
-    var category_color: String? = null
+    @ColumnInfo
+    @SerializedName ("category_color") val category_color: String
+
 )
