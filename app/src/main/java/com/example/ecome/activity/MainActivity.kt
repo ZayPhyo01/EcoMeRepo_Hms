@@ -17,7 +17,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
 
-    lateinit var categoryRecyclerView: RecyclerView
     lateinit var productRecyclerView: RecyclerView
     lateinit var categoryModel: CategoryModel
     lateinit var productModel: ProductModel
@@ -33,12 +32,11 @@ class MainActivity : BaseActivity() {
 
 
         //For category list
-        categoryRecyclerView = rv_category
         var layoutManager: LinearLayoutManager =
             LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
-        categoryRecyclerView.layoutManager = layoutManager
+        rv_category.layoutManager = layoutManager
         categoryAdapter = CategoryAdapter(context = applicationContext)
-        categoryRecyclerView.adapter = categoryAdapter
+        rv_category.adapter = categoryAdapter
 
         //For product list
         productRecyclerView = rv_product

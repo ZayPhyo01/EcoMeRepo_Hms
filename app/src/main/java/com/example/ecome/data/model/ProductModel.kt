@@ -8,7 +8,7 @@ import com.example.ecome.network.response.ProductResponse
 class ProductModel private constructor(context: Context) : BaseModel(context), ImplProduct {
 
     override fun getProductsById(id: Int): ProductVO {
-        return mEcommerceDatabase!!.getProductDao().getProductById(id)
+        return mEcommerceDatabase.getProductDao().getProductById(id)
     }
 
 
@@ -37,18 +37,18 @@ class ProductModel private constructor(context: Context) : BaseModel(context), I
 
             override fun success(dataVo: ProductResponse) {
 
-               var productsList =  mEcommerceDatabase!!.getProductDao().insertProduct(dataVo.products!!)
+               var productsList =  mEcommerceDatabase.getProductDao().insertProduct(dataVo.products!!)
 
                 delegate.onSuccess(dataVo.products!!)
             }
 
         })
-        var result = mEcommerceDatabase!!.getProductDao().getProduct()
+        var result = mEcommerceDatabase.getProductDao().getProduct()
         return result
     }
 
     fun isEmpty(): Boolean {
-        return if (mEcommerceDatabase!!.getProductDao().getProduct() == null) {
+        return if (mEcommerceDatabase.getProductDao().getProduct() == null) {
             true
         } else {
             false
