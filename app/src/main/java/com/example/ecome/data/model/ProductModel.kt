@@ -35,6 +35,8 @@ class ProductModel private constructor(context: Context) : BaseModel(context), I
                 delegate.onError(message)
             }
 
+            
+
             override fun success(dataVo: ProductResponse) {
 
                var productsList =  mEcommerceDatabase.getProductDao().insertProduct(dataVo.products!!)
