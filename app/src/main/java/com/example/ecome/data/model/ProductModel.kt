@@ -35,7 +35,7 @@ class ProductModel private constructor(context: Context) : BaseModel(context), I
                 delegate.onError(message)
             }
 
-            
+
 
             override fun success(dataVo: ProductResponse) {
 

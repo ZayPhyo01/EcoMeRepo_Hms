@@ -44,7 +44,7 @@ class DetailtActivity : BaseActivity() {
 
 
        val productId : Int = intent.getIntExtra(AppUtils.PRODUCT_ID, 1)
-        var productVo: ProductVO = productModel!!.getProductsById(productId)
+        var productVo: ProductVO = productModel.getProductsById(productId)
         productDesc.setText(productVo.product_desc)
         productPrice.setText(productVo.product_price)
         productName.setText(productVo.product_name)

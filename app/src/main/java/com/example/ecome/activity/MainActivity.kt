@@ -13,9 +13,17 @@ import com.example.ecome.data.model.ImplProduct
 import com.example.ecome.data.model.ProductModel
 import com.example.ecome.data.vos.CategoryVO
 import com.example.ecome.data.vos.ProductVO
+import com.example.ecome.delegate.onTapItemDelegate
+import com.example.ecome.util.AppUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), onTapItemDelegate {
+
+
+    override fun onTapProductID(productId: Int) {
+        var intent = DetailtActivity.newIntent(applicationContext)
+        intent.putExtra(AppUtils.PRODUCT_ID,productId)
+        startActivity(intent)    }
 
     lateinit var productRecyclerView: RecyclerView
     lateinit var categoryModel: CategoryModel
@@ -56,6 +64,8 @@ class MainActivity : BaseActivity() {
                 categoryAdapter.setNewData(categoryResult)
             }
         })
+
+
 
 
         productModel = ProductModel.getInstance()

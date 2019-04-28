@@ -36,7 +36,7 @@ class CategoryModel private constructor(context : Context) : BaseModel(context),
             }
 
             override fun success(dataVo: CategoryResponse) {
-                mEcommerceDatabase!!.getCategoryDao().insertCategory(dataVo.categoryList!!)
+                mEcommerceDatabase.getCategoryDao().insertCategory(dataVo.categoryList!!)
 
                 result.onSuccess(dataVo.categoryList)
 
@@ -45,11 +45,11 @@ class CategoryModel private constructor(context : Context) : BaseModel(context),
 
         })
 
-        return  mEcommerceDatabase!!.getCategoryDao().getCategory()
+        return  mEcommerceDatabase.getCategoryDao().getCategory()
     }
 
       fun isEmpty():Boolean {
-       return if(mEcommerceDatabase!!.getCategoryDao().getCategory()==null) {
+       return if(mEcommerceDatabase.getCategoryDao().getCategory()==null) {
             true
         }else {
            false

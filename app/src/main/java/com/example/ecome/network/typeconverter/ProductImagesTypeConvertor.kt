@@ -15,7 +15,7 @@ class ProductImagesTypeConvertor {
 
     @TypeConverter
     fun toObj (string : String) : MutableList<ProductImageVO> {
-        var gson = Gson()
+       // var gson = Gson()
 
         val listType = object : TypeToken<MutableList<ProductImageVO>>() {
 
