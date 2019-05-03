@@ -5,7 +5,7 @@ import com.example.ecome.data.vos.CategoryVO
 import com.example.ecome.delegate.BaseDelegate
 import com.example.ecome.network.response.CategoryResponse
 
-class CategoryModel private constructor(context : Context) : BaseModel(context), ImplCategory {
+object CategoryModel private constructor(context : Context) : BaseModel(context), ImplCategory {
 
 
     companion object {

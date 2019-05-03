@@ -7,9 +7,9 @@ import com.google.gson.annotations.SerializedName
 data class ProductImageVO(
 
     @ColumnInfo
-    @SerializedName("id") var id : Int,
+    @SerializedName("id") val id : Int,
 
     @ColumnInfo
-    @SerializedName ("image_url") var image_url : String? = null
+    @SerializedName ("image_url") val image_url : String? = null
 
     )

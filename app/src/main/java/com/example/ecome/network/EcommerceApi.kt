@@ -3,6 +3,7 @@ package com.example.ecome.network
 
 import com.example.ecome.data.vos.ProductVO
 import com.example.ecome.network.response.CategoryResponse
+import com.example.ecome.network.response.LoginResponse
 import com.example.ecome.network.response.ProductResponse
 import com.example.ecome.util.DataAgentUtil
 import retrofit2.Call
@@ -19,4 +20,10 @@ interface EcommerceApi {
     @POST(DataAgentUtil.PRODUCT_URL)
     @FormUrlEncoded
     fun getProduct(@Field("access_token") access_token: String, @Field("page") page: Int): Call<ProductResponse>
+
+
+    @POST(DataAgentUtil.LOGIN_URL)
+    @FormUrlEncoded
+    fun login(@Field("name") name: String, @Field("password")password : String) : Call<LoginResponse>
+
 }

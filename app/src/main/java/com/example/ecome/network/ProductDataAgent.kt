@@ -2,12 +2,33 @@ package com.example.ecome.network
 
 import com.example.ecome.delegate.BaseDelegate
 import com.example.ecome.network.response.CategoryResponse
+import com.example.ecome.network.response.LoginResponse
 import com.example.ecome.network.response.ProductResponse
+import com.example.ecome.network.response.RegisterResponse
 import com.example.ecome.util.DataAgentUtil
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class ProductDataAgent private constructor() : DataAgent {
+
+
+
+    override fun login(name: String, password: String, loginDelegate: BaseDelegate<LoginResponse>) {
+        mEcommerceApi.login(name, password).enqueue(ProductCallback<LoginResponse>(loginDelegate))
+    }
+
+    override fun register(
+        name: String,
+        phone: String,
+        password: String,
+        birth: String,
+        country: String,
+        registerDelegate: BaseDelegate<RegisterResponse>
+    ) {
+
+    }
+
+
 
     override fun loadCategory(categoryDelegate: BaseDelegate<CategoryResponse>) {
         var categories = mEcommerceApi.getCategory(DataAgentUtil.ACCESS_TOKEN, 1)

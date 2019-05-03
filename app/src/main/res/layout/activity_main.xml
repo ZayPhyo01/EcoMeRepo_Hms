@@ -53,7 +53,6 @@
 
         <LinearLayout
                 android:layout_width="match_parent"
-
                 android:orientation="vertical"
                 android:paddingLeft="@dimen/margin_medium_2"
                 android:layout_height="wrap_content">

@@ -7,7 +7,7 @@ import android.content.Context
 import com.example.ecome.data.vos.CategoryVO
 import com.example.ecome.data.vos.ProductVO
 
-@Database(entities = arrayOf(CategoryVO::class,ProductVO::class), version = 5)
+@Database(entities = arrayOf(CategoryVO::class,ProductVO::class), version = 7)
 abstract class EcommerceDatabase : RoomDatabase() {
 
     public abstract fun getCategoryDao(): CategoryDao

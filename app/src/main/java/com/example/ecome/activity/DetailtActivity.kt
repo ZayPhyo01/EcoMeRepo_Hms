@@ -22,6 +22,11 @@ class DetailtActivity : BaseActivity() {
     lateinit var productDesc: TextView
     lateinit var productModel: ProductModel
 
+  /*
+    init {
+        productName = t
+    }
+*/
 
     companion object {
 
@@ -43,7 +48,7 @@ class DetailtActivity : BaseActivity() {
         productImage = iv_detail_product
 
 
-       val productId : Int = intent.getIntExtra(AppUtils.PRODUCT_ID, 1)
+       val productId : Int = intent.getIntExtra(AppUtils.PRODUCT_ID, -1)
         var productVo: ProductVO = productModel.getProductsById(productId)
         productDesc.setText(productVo.product_desc)
         productPrice.setText(productVo.product_price)

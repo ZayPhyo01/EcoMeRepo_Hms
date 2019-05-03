@@ -7,43 +7,42 @@ import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "product")
 @TypeConverters(ProductImagesTypeConvertor::class)
-class ProductVO {
+data class ProductVO (
 
 
     @PrimaryKey
     @ColumnInfo
     @SerializedName("product_id")
-    var product_id: Int = 0
+    val product_id: Int,
 
     @ColumnInfo
     @SerializedName("product_name")
-    var product_name: String? = null
+    val product_name: String,
 
-
-    @ColumnInfo
-    @SerializedName("product_image_url")
-    var product_image_url: List<ProductImageVO>? = null
-        get() = if (field == null) ArrayList() else field
+//
+//    @ColumnInfo
+//    @SerializedName("product_image_url")
+//    val product_image_url: List<ProductImageVO>
+//        get() = if (field == null) ArrayList() else field,
 
     @ColumnInfo
     @SerializedName("product_desc")
-    var product_desc: String? = null
+    val product_desc: String,
 
     @ColumnInfo
     @SerializedName("product_price")
-    var product_price: String? = null
-
+    val product_price: String,
     @ColumnInfo
     @SerializedName("uploaded_time")
-    var uploaded_time: String? = null
+    val uploaded_time: String,
 
     @ColumnInfo
     @SerializedName("uploaded_date")
-    var uploaded_date: String? = null
-
+    val uploaded_date: String,
     @ColumnInfo
     @SerializedName("availability")
-    var availability: String? = null
+    val availability: String
+)
 
 //    var images: List<String>? = null
 //            get() = if (field == null) ArrayList() else field

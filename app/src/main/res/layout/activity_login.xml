@@ -42,7 +42,7 @@
         android:id="@+id/card_view"
         android:layout_width="wrap_content"
         android:layout_height="400dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="200dp"
         android:layout_gravity="center"
         android:layout_marginEnd="@dimen/margin_medium_2"
         android:layout_marginStart="@dimen/margin_medium_2"
@@ -71,6 +71,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/lb_sign_in"
                     android:gravity="center"
+                    android:layout_marginRight="@dimen/margin_medium_2"
                     android:orientation="vertical">
 
                 <LinearLayout
@@ -90,7 +91,7 @@
                     <!--android:src="@drawable/ic_perm_identity_24dp" />-->
 
                     <EditText
-                            android:id="@+id/et_email"
+                            android:id="@+id/et_userName"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -105,6 +106,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/margin_medium_2"
                         android:layout_marginStart="@dimen/margin_medium_2"
+                        android:layout_marginRight="@dimen/margin_medium_2"
                         android:orientation="horizontal">
 
                     <!--<ImageView-->
@@ -127,7 +129,7 @@
             </LinearLayout>
 
             <Button
-                    android:id="@+id/btn_sign_in"
+                    android:id="@+id/btn_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -137,6 +139,7 @@
                     android:layout_below="@id/ll_username_pw"
                     android:layout_marginTop="@dimen/margin_xlarge"
                     android:background="@color/colorPrimary"
+                    android:layout_marginRight="@dimen/margin_medium_2"
                     android:textColor="@color/product_name_color"/>
 
             <!--<LinearLayout-->

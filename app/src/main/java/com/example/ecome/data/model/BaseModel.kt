@@ -4,10 +4,10 @@ import android.content.Context
 import com.example.ecome.network.ProductDataAgent
 import com.example.ecome.persistance.EcommerceDatabase
 
-open class BaseModel protected constructor(context: Context) {
+open class BaseModel {
 
-    var mDataAgent = ProductDataAgent.getInstance()
+    val mDataAgent = ProductDataAgent.getInstance()
 
-    var mEcommerceDatabase : EcommerceDatabase = EcommerceDatabase.getInstance(context)
+    lateinit var mEcommerceDatabase: EcommerceDatabase
 
 }

@@ -6,31 +6,28 @@ import android.arch.persistence.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "login_user")
-data class LoginUserVO (
+ data class LoginUserVO (
 
-    @PrimaryKey
-    @ColumnInfo
-    @SerializedName("user_id") var user_id : Int,
 
-    @ColumnInfo
-    @SerializedName("name") var name : String,
+    val user_id: Int,
 
-    @ColumnInfo
-    @SerializedName("address") var address : String,
+    val name: String,
 
-    @ColumnInfo
-    @SerializedName("phone_no") var phone_no : String,
 
-    @ColumnInfo
-    @SerializedName("wallet") var wallet : String,
+    val address: String,
 
-    @ColumnInfo
-    @SerializedName("profile_image") var profile_image : String,
 
-    @ColumnInfo
-    @SerializedName("cover_image") var cover_image : String
+    val phone_no: String,
 
-    )
+
+    val wallet: String,
+
+
+    val profile_image: String,
+
+    val cover_image: String
+
+)
 
 /*
 "login_user": {

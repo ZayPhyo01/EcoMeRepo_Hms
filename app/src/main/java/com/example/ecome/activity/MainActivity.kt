@@ -1,5 +1,7 @@
 package com.example.ecome.activity
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
@@ -20,16 +22,35 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : BaseActivity(), onTapItemDelegate {
 
 
+
+    companion object {
+
+        public fun newIntent (context : Context): Intent {
+            var intent = Intent(context,MainActivity::class.java)
+            return intent
+        }
+
+    }
+
     override fun onTapProductID(productId: Int) {
         var intent = DetailtActivity.newIntent(applicationContext)
         intent.putExtra(AppUtils.PRODUCT_ID,productId)
         startActivity(intent)    }
 
-    lateinit var productRecyclerView: RecyclerView
-    lateinit var categoryModel: CategoryModel
-    lateinit var productModel: ProductModel
-    lateinit var categoryAdapter: CategoryAdapter
-    lateinit var productAdapter: ProductAdapter
+     val categoryModel: CategoryModel
+    val productModel: ProductModel
+    val productAdapter: ProductAdapter
+    val categoryAdapter: CategoryAdapter
+
+
+    init {
+        productRecyclerView =  rv_product
+        categoryModel = CategoryModel
+        productModel = ProductModel
+        productAdapter = ProductAdapter(applicationContext)
+        categoryAdapter = CategoryAdapter(applicationContext)
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

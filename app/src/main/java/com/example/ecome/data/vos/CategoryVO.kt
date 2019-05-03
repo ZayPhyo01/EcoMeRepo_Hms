@@ -11,10 +11,10 @@ data class CategoryVO(
 
     @PrimaryKey
     @ColumnInfo
-    @SerializedName ("category_id" ) var category_id :Int,
+    @SerializedName ("category_id" ) val category_id :Int,
 
     @ColumnInfo
-    @SerializedName ("category_name") var category_name : String,
+    @SerializedName ("category_name") val category_name : String,
 
     @ColumnInfo
     @SerializedName ("category_icon" ) val category_icon :String,
