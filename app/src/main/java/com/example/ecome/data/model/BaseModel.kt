@@ -10,4 +10,10 @@ open class BaseModel {
 
     lateinit var mEcommerceDatabase: EcommerceDatabase
 
+    fun initEcoDatabase(context: Context)
+    {
+        mEcommerceDatabase = EcommerceDatabase.getInstance(context)
+
+    }
+
 }

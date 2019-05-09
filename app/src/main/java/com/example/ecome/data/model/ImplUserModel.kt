@@ -4,24 +4,9 @@ import android.content.Context
 import com.example.ecome.delegate.BaseDelegate
 import com.example.ecome.network.response.LoginResponse
 
-class ImplUserModel private constructor(context: Context): BaseModel (context), UserModel{
+object ImplUserModel: BaseModel (), UserModel{
 
-    companion object {
-        var INSTANCE : ImplUserModel? = null
-
-        fun initUserModel (context: Context){
-            if (INSTANCE == null)
-                INSTANCE = ImplUserModel(context)
-
-        }
-
-        fun getInstance() :ImplUserModel{
-            return INSTANCE!!
-        }
-    }
-
-
-
+    fun getInstance() : ImplUserModel = ImplUserModel
 
     override fun login(name: String, password: String, loginDelegate: UserModel.loginDelegate) {
         mDataAgent.login(name,password,object : BaseDelegate<LoginResponse> {
@@ -30,7 +15,7 @@ class ImplUserModel private constructor(context: Context): BaseModel (context), 
             }
 
             override fun success(dataVo: LoginResponse) {
-                loginDelegate.onSuccess(dataVo.login_user)
+                loginDelegate.onSuccess(dataVo.login_user!!) /// !!
             }
         })
 

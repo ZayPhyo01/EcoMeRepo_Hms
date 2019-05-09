@@ -8,18 +8,40 @@ import com.example.ecome.data.vos.ProductVO
 import com.example.ecome.view.holders.ProductViewHolder
 
 @Dao
-interface ProductDao {
+abstract class ProductDao {
 
     @Query("Select * from product")
-    fun getProduct() : MutableList<ProductVO>
+    abstract fun getProduct() : MutableList<ProductVO>
 
     @Query("Select * from product where product_id = :id")
-    fun getProductById(id : Int) : ProductVO
+    abstract fun getProductById(id : Int) : ProductVO
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertProduct(products : MutableList<ProductVO>) : List<Long>
+    abstract fun insertProduct(products : MutableList<ProductVO>) : List<Long>
 
 
+    fun getFavouriteByProductID(favouriteDao: FavouriteDao, productDao: ProductDao): MutableList<ProductVO>{
+
+        var allProductsId = productDao.getProduct()
+        var allFavouritesId = favouriteDao.getFavouriteProduct()
+
+
+        for (p in allProductsId){
+            for (f in allFavouritesId){
+
+                if (p.product_id == f.product_id){
+
+                    p.isFavourtie = true
+
+                    break
+                }
+
+            }
+        }
+
+
+        return allProductsId
+    }
 
 
 

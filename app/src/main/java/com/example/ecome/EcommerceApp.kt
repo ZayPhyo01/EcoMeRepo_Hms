@@ -7,9 +7,10 @@ class EcommerceApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        CategoryModel.initNewsAppModel(applicationContext)
-        ProductModel.initProductAppModel(applicationContext)
-        ImplUserModel.initUserModel(applicationContext)
+       // CategoryModel.initNewsAppModel(applicationContext)
+        CategoryModel.initEcoDatabase(applicationContext)
+        ProductModel.initEcoDatabase(applicationContext)
+        ImplUserModel.initEcoDatabase(applicationContext)
         //BaseModel.setUpDatabase(applicationContext)
     }
 }

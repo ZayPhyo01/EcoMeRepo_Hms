@@ -22,11 +22,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : BaseActivity(), onTapItemDelegate {
 
 
-
     companion object {
 
-        public fun newIntent (context : Context): Intent {
-            var intent = Intent(context,MainActivity::class.java)
+        public fun newIntent(context: Context): Intent {
+            var intent = Intent(context, MainActivity::class.java)
             return intent
         }
 
@@ -34,19 +33,21 @@ class MainActivity : BaseActivity(), onTapItemDelegate {
 
     override fun onTapProductID(productId: Int) {
         var intent = DetailtActivity.newIntent(applicationContext)
-        intent.putExtra(AppUtils.PRODUCT_ID,productId)
-        startActivity(intent)    }
+        intent.putExtra(AppUtils.PRODUCT_ID, productId)
+        startActivity(intent)
+    }
 
-     val categoryModel: CategoryModel
-    val productModel: ProductModel
-    val productAdapter: ProductAdapter
-    val categoryAdapter: CategoryAdapter
+    lateinit var categoryModel: CategoryModel
+    lateinit var productModel: ProductModel
+    lateinit var productAdapter: ProductAdapter
+    lateinit var categoryAdapter: CategoryAdapter
+    lateinit var productRecyclerView: RecyclerView
 
 
     init {
-        productRecyclerView =  rv_product
-        categoryModel = CategoryModel
-        productModel = ProductModel
+        productRecyclerView = rv_product
+        categoryModel = CategoryModel.getInstance()
+        productModel = ProductModel.getInstance()
         productAdapter = ProductAdapter(applicationContext)
         categoryAdapter = CategoryAdapter(applicationContext)
     }
@@ -75,22 +76,23 @@ class MainActivity : BaseActivity(), onTapItemDelegate {
         productRecyclerView.adapter = productAdapter
 
         categoryModel = CategoryModel.getInstance()
-        var categoryFromDb : MutableList<CategoryVO> = categoryModel.getCategoryList(object : ImplCategory.CategoryResult {
-            override fun onError(message: String) {
+        var categoryFromDb: MutableList<CategoryVO> =
+            categoryModel.getCategoryList(object : ImplCategory.CategoryResult {
+                override fun onError(message: String) {
 
-            }
+                }
 
-            override fun onSuccess(categories: MutableList<CategoryVO>) {
-                val categoryResult = categories
-                categoryAdapter.setNewData(categoryResult)
-            }
-        })
+                override fun onSuccess(categories: MutableList<CategoryVO>) {
+                    val categoryResult = categories
+                    categoryAdapter.setNewData(categoryResult)
+                }
+            })
 
 
 
 
         productModel = ProductModel.getInstance()
-        var products : MutableList<ProductVO> = productModel.getProducts(object : ImplProduct.ProductDelegate {
+        var products: MutableList<ProductVO> = productModel.getProducts(object : ImplProduct.ProductDelegate {
             override fun onSuccess(products: MutableList<ProductVO>) {
                 var products = products
                 productAdapter.setNewData(products)

@@ -5,29 +5,17 @@ import com.example.ecome.data.vos.CategoryVO
 import com.example.ecome.delegate.BaseDelegate
 import com.example.ecome.network.response.CategoryResponse
 
-object CategoryModel private constructor(context : Context) : BaseModel(context), ImplCategory {
+object CategoryModel : BaseModel(), ImplCategory {
 
-
-    companion object {
-        var categoryModel: CategoryModel? = null
 
         fun getInstance(): CategoryModel {
-            if (categoryModel == null) {
-                throw RuntimeException("NewsModel is being invoked before initializing.")
-            }
-            return categoryModel!!
-
+            return CategoryModel
         }
 
-        fun initNewsAppModel(context : Context) {
-            categoryModel = CategoryModel(context)
-        }
-    }
+
+
 
     override fun getCategoryList(result: ImplCategory.CategoryResult) : MutableList<CategoryVO> {
-
-
-
 
 
         mDataAgent.loadCategory(object : BaseDelegate<CategoryResponse> {
@@ -39,7 +27,6 @@ object CategoryModel private constructor(context : Context) : BaseModel(context)
                 mEcommerceDatabase.getCategoryDao().insertCategory(dataVo.categoryList!!)
 
                 result.onSuccess(dataVo.categoryList)
-
 
             }
 
@@ -55,7 +42,5 @@ object CategoryModel private constructor(context : Context) : BaseModel(context)
            false
        }
     }
-
-
 
 }

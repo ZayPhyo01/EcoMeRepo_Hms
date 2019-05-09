@@ -41,7 +41,7 @@ class DetailtActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.detail_product_activity)
 
-        productModel = ProductModel.getInstance()
+        productModel = ProductModel
         productDesc = tv_detail_product_desc
         productName = tv_detail_product_name
         productPrice = tv_detail_product_price
